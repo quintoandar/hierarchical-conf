@@ -1,0 +1,6 @@
+[run]
+concurrency = multiprocessing
+parallel = true
+
+[report]
+exclude_lines = raise NotImplementedError
