@@ -2,7 +2,11 @@ from unittest import mock
 
 import pytest
 
+<<<<<<< HEAD
 from hierarchical_conf.hierarchical_conf import HierarchicalConf
+=======
+from quintoandar_hierarchical_conf.hierarchical_conf import HierarchicalConf
+>>>>>>> 44377d5 (Add unit tests)
 
 
 @pytest.fixture()
