@@ -41,7 +41,7 @@ requirements-docs:
 .PHONY: tests
 ## run all unit and integration tests with coverage report
 tests:
-	@python -m pytest -W ignore::DeprecationWarning --cov-config=.coveragerc --cov=quintoandar_hierarchical_conf --cov-report term --cov-report html:htmlcov --cov-report xml:coverage.xml tests
+	@python -m pytest -W ignore::DeprecationWarning --cov-config=.coveragerc --cov=hierarchical_conf --cov-report term --cov-report html:htmlcov --cov-report xml:coverage.xml tests
 	@python -m coverage xml -i
 
 .PHONY: unit-tests
@@ -51,7 +51,7 @@ unit-tests:
 	@echo "Unit Tests"
 	@echo "=========="
 	@echo ""
-	@python -m pytest -W ignore::DeprecationWarning --cov-config=.coveragerc --cov-report term --cov-report html:unit-tests-cov --cov=quintoandar_hierarchical_conf --cov-fail-under=90 tests/unit
+	@python -m pytest -W ignore::DeprecationWarning --cov-config=.coveragerc --cov-report term --cov-report html:unit-tests-cov --cov=hierarchical_conf --cov-fail-under=90 tests/unit
 
 .PHONY: integration-tests
 ## run integration tests with coverage report
@@ -60,7 +60,7 @@ integration-tests:
 	@echo "Integration Tests"
 	@echo "================="
 	@echo ""
-	@python -m pytest -W ignore::DeprecationWarning --cov-config=.coveragerc --cov-report term --cov-report xml:integration-tests-cov.xml --cov=quintoandar_hierarchical_conf --cov-fail-under=60 tests/integration
+	@python -m pytest -W ignore::DeprecationWarning --cov-config=.coveragerc --cov-report term --cov-report xml:integration-tests-cov.xml --cov=hierarchical_conf --cov-fail-under=60 tests/integration
 
 # Style & Lint ================================================================
 
@@ -72,7 +72,7 @@ style-check:
 	@echo "================"
 	@echo ""
 	@python -m black --check --exclude="build/|buck-out/|dist/|_build/|pip/|env/|\.pip/|\.git/|\.hg/|\.mypy_cache/|\.tox/|\.venv/|cmake*" . && echo "\n\nSuccess\n" || (echo "\n\nFailure\n\nRun \"make apply-style\" to apply style formatting to your code\n" && exit 1)
-	@python -m flake8 --config=setup.cfg quintoandar_hierarchical_conf/
+	@python -m flake8 --config=setup.cfg hierarchical_conf/
 
 .PHONY: type-check
 ## run static type checks
@@ -81,7 +81,7 @@ type-check:
 	@echo "Mypy"
 	@echo "===="
 	@echo ""
-	@python -m mypy quintoandar_hierarchical_conf
+	@python -m mypy hierarchical_conf
 
 .PHONY: checks
 ## run all code checks
@@ -116,8 +116,8 @@ package:
 .PHONY: update-docs
 ## update project API docs
 update-docs:
-	cd ./docs; rm -rf source/quintoandar_hierarchical_conf.*
-	cd ./docs; sphinx-apidoc -T -E -o source/ ../quintoandar_hierarchical_conf
+	cd ./docs; rm -rf source/hierarchical_conf.*
+	cd ./docs; sphinx-apidoc -T -E -o source/ ../hierarchical_conf
 	cd ./docs; make coverage
 
 .PHONY: docs
@@ -133,7 +133,7 @@ docs:
 clean:
 	@find ./ -type d -name 'dist' -exec rm -rf {} +;
 	@find ./ -type d -name 'build' -exec rm -rf {} +;
-	@find ./ -type d -name 'quintoandar_hierarchical_conf.egg-info' -exec rm -rf {} +;
+	@find ./ -type d -name 'hierarchical_conf.egg-info' -exec rm -rf {} +;
 	@find ./ -type d -name 'htmlcov' -exec rm -rf {} +;
 	@find ./ -type d -name '*-tests-cov' -exec rm -rf {} +;
 	@find ./ -type d -name '.pytest_cache' -exec rm -rf {} +;
