@@ -39,10 +39,12 @@ my_config = hierarchical_conf.get_config("my_config_key")
 This tool retrieve the configurations from (YAML) files according to the current
 environment and files precedence.
 
-It receives a list of paths to search the environment configuration files and load them
-**overwriting duplicated keys** with the value of the **last** loaded one.
+It receives a list of paths and searches each one for environment configuration files in an **orderly 
+fashion**, loading them when found and **overwriting duplicated** configuration keys by the value of the key 
+available in the file loaded at last.
+The YAML configuration files are expected to be named with prefixes based on the working environment, 
+retrieved by the value of a pre-existent operational system environment's variable named `ENVIRONMENT`.
 
-It will search the files based on the operational system environment's variable `ENVIRONMENT`.
 
 E.g.: Given the respective environments `dev` and `production` configuration files below:
 
