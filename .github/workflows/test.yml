@@ -30,4 +30,9 @@ jobs:
       run: make requirements-minimum
 
     - name: Tests
-      run: PYTHONPATH=./pip/deps make tests
+      run: |
+        echo "Setting ENVIRONMENT variable for tests"
+        export ENVIRONMENT="test" 
+        echo $ENVIRONMENT
+        echo "Running tests"
+        PYTHONPATH=./pip/deps make tests
