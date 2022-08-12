@@ -4,11 +4,7 @@ from unittest import mock
 
 import pytest
 
-<<<<<<< HEAD
 from hierarchical_conf.hierarchical_conf import HierarchicalConf
-=======
-from quintoandar_hierarchical_conf.hierarchical_conf import HierarchicalConf
->>>>>>> 44377d5 (Add unit tests)
 
 
 class TestHierarchicalConf:
@@ -32,11 +28,7 @@ class TestHierarchicalConf:
 
         # assert
         mock_get_environment.assert_called_once_with()
-<<<<<<< HEAD
         mock_search_configurations_files.assert_called_once_with()
-=======
-        mock_search_configurations_files.assert_called_once_with(searched_paths)
->>>>>>> 44377d5 (Add unit tests)
         mock_load_configurations_from_files.assert_called_once_with()
 
     @mock.patch.object(HierarchicalConf, "_validate_if_config_file_exists")
@@ -120,11 +112,7 @@ class TestHierarchicalConf:
         with pytest.raises(IndexError):
             hconf.get_config("c")
 
-<<<<<<< HEAD
     @mock.patch("hierarchical_conf.hierarchical_conf.yaml")
-=======
-    @mock.patch("quintoandar_hierarchical_conf.hierarchical_conf.yaml")
->>>>>>> 44377d5 (Add unit tests)
     @mock.patch("builtins.open")
     def test__read_configuration(self, mock_open, mock_yaml, hierarchical_conf):
         # arrange
@@ -146,11 +134,7 @@ class TestHierarchicalConf:
         with pytest.raises(FileNotFoundError):
             hierarchical_conf._validate_if_config_file_exists(path)
 
-<<<<<<< HEAD
     @mock.patch("hierarchical_conf.hierarchical_conf.os.path.isfile")
-=======
-    @mock.patch("quintoandar_hierarchical_conf.hierarchical_conf.os.path.isfile")
->>>>>>> 44377d5 (Add unit tests)
     def test__validate_if_config_file_exists_without_error(
         self, mock_is_file, hierarchical_conf
     ):
@@ -170,7 +154,6 @@ class TestHierarchicalConf:
         with pytest.raises(ValueError):
             hierarchical_conf._get_environment()
 
-<<<<<<< HEAD
     def test_invalid_configuration_files(self):
         # act & assert
         with pytest.raises(FileNotFoundError) as e:
@@ -179,15 +162,6 @@ class TestHierarchicalConf:
             str(e.value)
             == "given_paths=[], msg=No configuration file(s) found in the path(s) specified."
         )
-=======
-    def test__search_configurations_files(self, hierarchical_conf):
-        # arrange
-        conf_files_paths = []
-
-        # act & assert
-        with pytest.raises(FileNotFoundError):
-            hierarchical_conf._search_configurations_files(conf_files_paths)
->>>>>>> 44377d5 (Add unit tests)
 
     def test_deep_update(self, hierarchical_conf):
         # arrange
