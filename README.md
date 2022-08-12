@@ -1,7 +1,7 @@
 # Hierarchical Conf
 _A library for loading configurations (or other metadata) hierarchically based on the current environment_
 
-<img height="200" src="hconf_logo.jpg" />
+<img height="200" src="hierarchical_conf_logo.png" />
 
 [![Release](https://img.shields.io/github/v/release/quintoandar/hierarchical-conf)]((https://pypi.org/project/hierarchical-conf/))
 ![Python Version](https://img.shields.io/badge/python-3.7%20%7C%203.8-brightgreen.svg)
