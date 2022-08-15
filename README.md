@@ -1,12 +1,42 @@
 # Hierarchical Conf
 
-Service to retrieve configuration variables from YAML files and enable their access
-    according to priority rules based on the scope on which each variable was set, with
-    `general` scope as the lowest priority rule and `DAG` or `Spark Job` scopes as the
-    highest ones. The environment affects the selection of each variable as well, requiring
-    all variables to be replicated in each environment in order to be retrieved and used.
-    To override the configuration variables defined in the general scope, we just need
-    to use the same key, nested or not, in the DAG or Spark Job scope. For example:
+
+ Tool for retrieving configurations from (YAML) files according to the current
+  environment and files precedence.
+
+ It receives a list of paths to search the environment configuration files and load them
+  overwriting redundant keys with the value of the last loaded one.
+ It will search the files based on the operational system environment's variable `ENVIRONMENT`.
+
+E.g.: Given the respective environments `dev` and `production` configuration files below:
+
+ File dev_conf.yml:
+ ```
+     foo: bar_dev
+     foo2: bar_dev2
+ ```
+
+ File production_conf.yml:
+ ```
+     foo: bar_prod
+     foo2: bar_prod2
+ ```
+
+ and given we are at development environment (ENVIRONMENT=dev), the following code will load the
+  configuration file from the development environment file (/my/path/dev_conf.yml).
+
+ ```
+     hconf = HierarchicalConf(conf_files_paths=['/my/path/'])
+     foo_conf = hconf.get_config("foo")
+     print(foo_conf)
+
+     # prints: bar_dev
+ ```
+
+ Given `ENVIRONMENT=production`, the code above will load the configuration file from
+ the production environment file (/my/path/production_conf.yml) and print bar_prod.
+
+ For more examples, check the folder examples.
 
 ---
 
@@ -14,8 +44,6 @@ Service to retrieve configuration variables from YAML files and enable their acc
 
 - [Getting Started](#getting-started)
   - [Useful Commands](#useful-commands)
-  - [Known issues](#known-issues)
-- [Folder structure](#folder-structure)
 
 ## Getting Started
 
