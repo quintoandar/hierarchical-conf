@@ -22,7 +22,7 @@ class HierarchicalConf:
 
     @property
     def configs(self) -> Dict[str, Union[str, List[Any], Dict[str, Any]]]:
-        """All loaded configurations."""
+        """Returns all loaded configurations."""
         return self._configs.copy()
 
     @property
