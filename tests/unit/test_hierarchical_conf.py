@@ -28,7 +28,7 @@ class TestHierarchicalConf:
 
         # assert
         mock_get_environment.assert_called_once_with()
-        mock_search_configurations_files.assert_called_once_with()
+        mock_search_configurations_files.assert_called_once_with(searched_paths)
         mock_load_configurations_from_files.assert_called_once_with()
 
     @mock.patch.object(HierarchicalConf, "_validate_if_config_file_exists")

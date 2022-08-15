@@ -16,9 +16,8 @@ class HierarchicalConf:
         :param searched_paths: the list of paths where the conf files will be
          searched
         """
-        self.searched_paths = searched_paths
         self._config_file_name = f"{self._get_environment()}_conf.yml"
-        self._configuration_files = self._search_configurations_files()
+        self._configuration_files = self._search_configurations_files(searched_paths)
         self._configs = self._load_configurations_from_files()
 
     @property
@@ -36,7 +35,7 @@ class HierarchicalConf:
         """_configuration_files setter."""
         if not configuration_files:
             raise FileNotFoundError(
-                f"given_paths={self.searched_paths}, "
+                f"given_paths={configuration_files}, "
                 "msg=No configuration file(s) found in the path(s) specified."
             )
         self.__configuration_files = configuration_files
@@ -60,15 +59,17 @@ class HierarchicalConf:
 
         return configs
 
-    def _search_configurations_files(self) -> List[str]:
+    def _search_configurations_files(self, searched_paths: List[str]) -> List[str]:
         """
         Search for the configuration files inside given directories.
 
+        :param searched_paths: the list of paths where the conf files will be
+         searched
         :return: an ordered list with the files.
         :raises: an exception if file is not found inside the directories.
         """
         configuration_files = []
-        for path in self.searched_paths:
+        for path in searched_paths:
             environment_conf_file = f"{path}/{self._config_file_name}"
             self._validate_if_config_file_exists(environment_conf_file)
             configuration_files.append(environment_conf_file)
