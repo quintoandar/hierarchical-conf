@@ -1,10 +1,9 @@
-#!/usr/bin/env python
+from setuptools import setup, find_packages
 
 __package_name__ = "hierarchical_conf"
 __version__ = "1.0.0"
 __repository_url__ = "https://github.com/quintoandar/hierarchical-conf"
 
-from setuptools import setup, find_packages
 
 with open("README.md") as readme_file:
     readme = readme_file.read()
@@ -12,13 +11,14 @@ with open("README.md") as readme_file:
 with open("requirements.txt") as f:
     requirements = [line for line in f.read().splitlines() if len(line) > 0]
 
-with open("requirements.dev.txt") as f:
+with open("requirements.test.txt") as f:
     test_requirements = [line for line in f.read().splitlines() if len(line) > 0]
 
 setup(
     name=__package_name__,
     description="A tool for loading settings from files hierarchically",
     long_description=readme,
+    long_description_content_type="text/markdown",
     keywords="hierarchical-conf",
     version=__version__,
     url=__repository_url__,
