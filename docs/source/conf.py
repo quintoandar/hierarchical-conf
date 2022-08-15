@@ -1,3 +1,4 @@
+"""Sphinx Configuration."""
 # -*- coding: utf-8 -*-
 #
 # Configuration file for the Sphinx documentation builder.
@@ -22,12 +23,12 @@ sys.setrecursionlimit(1500)
 
 project = "Hierarchical Conf"
 copyright = "2022, QuintoAndar"
-author = "QuintoAndar"
+author = "Data Engineering Team"
 
 # The short X.Y version
-version = "0.0"
+version = "1.0"
 # The full version, including alpha/beta/rc tags
-release = "0.0.1"
+release = "1.0.0"
 
 
 # -- General configuration ---------------------------------------------------
@@ -41,11 +42,14 @@ release = "0.0.1"
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
-    "sphinx.ext.doctest",
-    "sphinx.ext.todo",
+    "recommonmark",
+    "sphinx_rtd_theme",
+    "sphinx.ext.napoleon",
     "sphinx.ext.coverage",
-    "sphinx.ext.viewcode",
+    "sphinxemoji.sphinxemoji",
 ]
+
+sphinxemoji_style = "twemoji"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -53,8 +57,7 @@ templates_path = ["_templates"]
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-# source_suffix = ['.rst', '.md']
-source_suffix = ".rst"
+source_suffix = [".rst", ".md"]
 
 # The master toctree document.
 master_doc = "index"
@@ -64,7 +67,7 @@ master_doc = "index"
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = "en"
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -80,6 +83,7 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
+# html_theme = 'alabaster'
 html_theme = "sphinx_rtd_theme"
 
 # Theme options are theme-specific and customize the look and feel of a theme
@@ -133,7 +137,7 @@ latex_elements = {
 latex_documents = [
     (
         master_doc,
-        "hierarchical_conf.tex",
+        "HierarchicalConf.tex",
         "Hierarchical Conf Documentation",
         "QuintoAndar",
         "manual",
@@ -149,7 +153,7 @@ man_pages = [
     (
         master_doc,
         "hierarchical_conf",
-        "Hierarchical Conf Documentation",
+        "HierarchicalConf Documentation",
         [author],
         1,
     )
@@ -164,10 +168,10 @@ man_pages = [
 texinfo_documents = [
     (
         master_doc,
-        "hierarchical_conf",
-        "hierarchical_conf Documentation",
+        "Hierarchical Conf",
+        "Hierarchical Conf Documentation",
         author,
-        "hierarchical_conf",
+        "Hierarchical Conf",
         "One line description of project.",
         "Miscellaneous",
     ),
@@ -193,8 +197,3 @@ epub_exclude_files = ["search.html"]
 
 
 # -- Extension configuration -------------------------------------------------
-
-# -- Options for todo extension ----------------------------------------------
-
-# If true, `todo` and `todoList` produce output, else they produce nothing.
-todo_include_todos = True
