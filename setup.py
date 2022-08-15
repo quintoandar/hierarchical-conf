@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 __package_name__ = "hierarchical_conf"
-__version__ = "0.0.1"
+__version__ = "1.0.0"
 __repository_url__ = "https://github.com/quintoandar/hierarchical-conf"
 
 from setuptools import setup, find_packages
