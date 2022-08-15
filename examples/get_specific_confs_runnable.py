@@ -5,7 +5,7 @@ This script can be run to be tested.
 """
 from os.path import dirname
 
-from quintoandar_hierarchical_conf.hierarchical_conf import HierarchicalConf
+from hierarchical_conf.hierarchical_conf import HierarchicalConf
 
 # Assuming you are running it in development environment, then you must
 # have assigned the OS variable ENVIROMENT. E.g.: `export ENVIRONMENT="dev"`

@@ -2,7 +2,7 @@ import os
 from os.path import dirname
 from unittest import mock
 
-from quintoandar_hierarchical_conf.hierarchical_conf import HierarchicalConf
+from hierarchical_conf.hierarchical_conf import HierarchicalConf
 
 
 @mock.patch.dict(os.environ, {"ENVIRONMENT": "integration_env"})

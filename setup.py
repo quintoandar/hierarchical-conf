@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-__package_name__ = "quintoandar_hierarchical_conf"
+__package_name__ = "hierarchical_conf"
 __version__ = "0.0.1"
 __repository_url__ = "https://github.com/quintoandar/hierarchical-conf"
 
@@ -24,8 +24,8 @@ setup(
     url=__repository_url__,
     packages=find_packages(
         include=[
-            "quintoandar_hierarchical_conf",
-            "quintoandar_hierarchical_conf.*",
+            "hierarchical_conf",
+            "hierarchical_conf.*",
         ]
     ),
     author="QuintoAndar",

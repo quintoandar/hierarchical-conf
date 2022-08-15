@@ -4,7 +4,7 @@ Loading confs from some conf file.
 To test this script you must create the conf files and place them in path1 and path2.
 """
 
-from quintoandar_hierarchical_conf.hierarchical_conf import HierarchicalConf
+from hierarchical_conf.hierarchical_conf import HierarchicalConf
 
 # Assuming you are running it in development environment, then you must
 # have assigned the OS variable ENVIROMENT. E.g.: `export ENVIRONMENT="dev"`

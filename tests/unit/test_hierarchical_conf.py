@@ -4,7 +4,7 @@ from unittest import mock
 
 import pytest
 
-from quintoandar_hierarchical_conf.hierarchical_conf import HierarchicalConf
+from hierarchical_conf.hierarchical_conf import HierarchicalConf
 
 
 class TestHierarchicalConf:
@@ -112,7 +112,7 @@ class TestHierarchicalConf:
         with pytest.raises(IndexError):
             hconf.get_config("c")
 
-    @mock.patch("quintoandar_hierarchical_conf.hierarchical_conf.yaml")
+    @mock.patch("hierarchical_conf.hierarchical_conf.yaml")
     @mock.patch("builtins.open")
     def test__read_configuration(self, mock_open, mock_yaml, hierarchical_conf):
         # arrange
@@ -134,7 +134,7 @@ class TestHierarchicalConf:
         with pytest.raises(FileNotFoundError):
             hierarchical_conf._validate_if_config_file_exists(path)
 
-    @mock.patch("quintoandar_hierarchical_conf.hierarchical_conf.os.path.isfile")
+    @mock.patch("hierarchical_conf.hierarchical_conf.os.path.isfile")
     def test__validate_if_config_file_exists_without_error(
         self, mock_is_file, hierarchical_conf
     ):
