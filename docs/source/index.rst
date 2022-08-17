@@ -1,6 +1,6 @@
 Hierarchical Conf
 ===========================
-Made with |:heart:| by the **Data Engineering** team from `QuintoAndar <https://github.com/quintoandar/>`_.
+Made by the **Data Engineering** team from `QuintoAndar <https://github.com/quintoandar/>`_.
 
 A library for loading configurations (or other metadata) hierarchically based on the current environment.
 
