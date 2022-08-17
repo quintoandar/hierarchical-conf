@@ -46,9 +46,10 @@ extensions = [
     "sphinx_rtd_theme",
     "sphinx.ext.napoleon",
     "sphinx.ext.coverage",
+    "sphinxemoji.sphinxemoji",
 ]
 
-# sphinxemoji_style = "twemoji"
+sphinxemoji_style = "twemoji"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
