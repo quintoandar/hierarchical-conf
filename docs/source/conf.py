@@ -16,10 +16,8 @@
 import os
 import sys
 
-# sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath("../.."))
-# import sphinx_rtd_theme
-
+sys.setrecursionlimit(1500)
 
 # -- Project information -----------------------------------------------------
 
@@ -28,9 +26,9 @@ copyright = "2022, QuintoAndar"
 author = "Data Engineering Team"
 
 # The short X.Y version
-version = "0.0"
+version = "1.0"
 # The full version, including alpha/beta/rc tags
-release = "0.0.1"
+release = "1.0.0"
 
 
 # -- General configuration ---------------------------------------------------
@@ -74,7 +72,7 @@ language = "en"
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = None
