@@ -1,6 +1,8 @@
 """Hierarchical Conf main class."""
+import logging
 import os
 from collections.abc import Mapping
+from os.path import isfile
 from typing import Union, List, Dict, Any, Mapping as MappingType
 
 import yaml
@@ -71,17 +73,24 @@ class HierarchicalConf:
         configuration_files = []
         for path in searched_paths:
             environment_conf_file = f"{path}/{self._config_file_name}"
-            self._validate_if_config_file_exists(environment_conf_file)
-            configuration_files.append(environment_conf_file)
+            if self._config_file_exists(environment_conf_file):
+                configuration_files.append(environment_conf_file)
         return configuration_files
 
     @staticmethod
-    def _validate_if_config_file_exists(config_file_path: str) -> None:
-        if not os.path.isfile(config_file_path):
-            raise FileNotFoundError(
-                f"expected_file={config_file_path}, "
-                "msg=This configuration file was not found in the given path."
-            )
+    def _config_file_exists(config_file_path: str) -> bool:
+        """
+        Checks if the configuration file path exists.
+        :param config_file_path: DAG's or Spark Job's configuration file path
+        """
+        if isfile(config_file_path):
+            return True
+
+        logging.warning(
+            f"msg=This configuration file was not found in the given path,"
+            f"file={config_file_path}"
+        )
+        return False
 
     @staticmethod
     def _read_configuration(conf_file_path: str) -> Union[Any, Dict[str, Any]]:

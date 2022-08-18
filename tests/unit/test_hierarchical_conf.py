@@ -31,10 +31,10 @@ class TestHierarchicalConf:
         mock_search_configurations_files.assert_called_once_with(searched_paths)
         mock_load_configurations_from_files.assert_called_once_with()
 
-    @mock.patch.object(HierarchicalConf, "_validate_if_config_file_exists")
+    @mock.patch.object(HierarchicalConf, "_config_file_exists")
     @mock.patch.object(HierarchicalConf, "_read_configuration")
     def test_get_conf_with_one_file(
-        self, mock_read_configuration, mock_validate_if_config_file_exists
+        self, mock_read_configuration, mock_config_file_exists
     ):
         # arrange
         expected_confs = {"key1": "val1", "key2": "val2"}
@@ -48,10 +48,10 @@ class TestHierarchicalConf:
         # assert
         assert hconf.configs == expected_confs
 
-    @mock.patch.object(HierarchicalConf, "_validate_if_config_file_exists")
+    @mock.patch.object(HierarchicalConf, "_config_file_exists")
     @mock.patch.object(HierarchicalConf, "_read_configuration")
     def test_get_conf_with_multiple_files(
-        self, mock_read_configuration, mock_validate_if_config_file_exists
+        self, mock_read_configuration, mock_config_file_exists
     ):
         # arrange
         expected_confs = {
@@ -82,10 +82,10 @@ class TestHierarchicalConf:
         assert hconf.configs == expected_confs
         assert hconf.get_config("key2") == "another value"
 
-    @mock.patch.object(HierarchicalConf, "_validate_if_config_file_exists")
+    @mock.patch.object(HierarchicalConf, "_config_file_exists")
     @mock.patch.object(HierarchicalConf, "_read_configuration")
     def test_existent_config(
-        self, mock_read_configuration, mock_validate_if_config_file_exists
+        self, mock_read_configuration, mock_config_file_exists
     ):
         # arrange
         mock_configs = {"a": 1, "b": 2}
@@ -97,10 +97,10 @@ class TestHierarchicalConf:
         # assert
         assert hconf.get_config("a") == 1
 
-    @mock.patch.object(HierarchicalConf, "_validate_if_config_file_exists")
+    @mock.patch.object(HierarchicalConf, "_config_file_exists")
     @mock.patch.object(HierarchicalConf, "_read_configuration")
     def test_nonexistent_config(
-        self, mock_read_configuration, mock_validate_if_config_file_exists
+        self, mock_read_configuration, mock_config_file_exists
     ):
         # arrange
         mock_configs = {"a": 1, "b": 2}
@@ -126,16 +126,18 @@ class TestHierarchicalConf:
         # assert
         assert content == expected_content
 
-    def test__validate_if_config_file_exists_with_error(self, hierarchical_conf):
+    def test__config_file_exists_with_non_existent_file(self, hierarchical_conf):
         # arrange
         path = "some_path"
 
-        # act & assert
-        with pytest.raises(FileNotFoundError):
-            hierarchical_conf._validate_if_config_file_exists(path)
+        # act
+        returned_value = hierarchical_conf._config_file_exists(path)
 
-    @mock.patch("hierarchical_conf.hierarchical_conf.os.path.isfile")
-    def test__validate_if_config_file_exists_without_error(
+        # assert
+        assert not returned_value
+
+    @mock.patch("hierarchical_conf.hierarchical_conf.isfile")
+    def test__config_file_exists_with_file(
         self, mock_is_file, hierarchical_conf
     ):
         # arrange
@@ -143,9 +145,10 @@ class TestHierarchicalConf:
         mock_is_file.return_value = True
 
         # act
-        hierarchical_conf._validate_if_config_file_exists(path)
+        returned_value = hierarchical_conf._config_file_exists(path)
 
         # assert
+        assert returned_value
         mock_is_file.assert_called_once_with(path)
 
     @mock.patch.dict(os.environ, {}, clear=True)
