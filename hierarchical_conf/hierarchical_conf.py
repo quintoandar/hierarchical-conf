@@ -37,7 +37,6 @@ class HierarchicalConf:
         """_configuration_files setter."""
         if not configuration_files:
             raise FileNotFoundError(
-                f"given_paths={configuration_files}, "
                 "msg=No configuration file(s) found in the path(s) specified."
             )
         self.__configuration_files = configuration_files
