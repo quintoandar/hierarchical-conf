@@ -157,7 +157,7 @@ class TestHierarchicalConf:
             HierarchicalConf(searched_paths=[])
         assert (
             str(e.value)
-            == "given_paths=[], msg=No configuration file(s) found in the path(s) specified."
+            == "msg=No configuration file(s) found in the path(s) specified."
         )
 
     def test_deep_update(self, hierarchical_conf):
