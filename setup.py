@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 __package_name__ = "hierarchical_conf"
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __repository_url__ = "https://github.com/quintoandar/hierarchical-conf"
 
 
@@ -19,7 +19,13 @@ setup(
     description="A tool for loading settings from files hierarchically",
     long_description=readme,
     long_description_content_type="text/markdown",
-    keywords="hierarchical-conf",
+    keywords=[
+        "hierarchical-conf",
+        "configuration by environment",
+        "configuration files",
+        "configuration as code",
+        "hierarchical configuration",
+    ],
     version=__version__,
     url=__repository_url__,
     packages=find_packages(
