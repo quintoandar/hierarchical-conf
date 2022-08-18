@@ -10,15 +10,10 @@ _Want to add some awesome bullet points?_
 - _Second changes;_
 - _..._
 
-_Want to add some cool checkboxes?_
-- [X] _First changes;_
-- [X] _Second changes;_
-- [ ] _..._
-
 ## Type of change :file_cabinet:
 _Please delete options that are not relevant._
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] Fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] Documentation
