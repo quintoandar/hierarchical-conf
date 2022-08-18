@@ -19,7 +19,13 @@ setup(
     description="A tool for loading settings from files hierarchically",
     long_description=readme,
     long_description_content_type="text/markdown",
-    keywords="hierarchical-conf",
+    keywords=[
+        "hierarchical-conf",
+        "configuration by environment",
+        "configuration files",
+        "configuration as code",
+        "hierarchical configuration",
+    ],
     version=__version__,
     url=__repository_url__,
     packages=find_packages(
