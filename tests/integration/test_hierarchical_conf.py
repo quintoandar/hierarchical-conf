@@ -48,7 +48,7 @@ class TestHierarchicalConf:
         expected_confs = {
             "key1": "value of key1...",
             "key2": "value of key2...",
-            "key3": {"foo": "value of key3.foo"}
+            "key3": {"foo": "value of key3.foo"},
         }
         integration_tests_folder = dirname(__file__)
         precedence_case_folder = dirname(__file__) + "/different_path/"

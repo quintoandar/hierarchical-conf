@@ -84,9 +84,7 @@ class TestHierarchicalConf:
 
     @mock.patch.object(HierarchicalConf, "_config_file_exists")
     @mock.patch.object(HierarchicalConf, "_read_configuration")
-    def test_existent_config(
-        self, mock_read_configuration, mock_config_file_exists
-    ):
+    def test_existent_config(self, mock_read_configuration, mock_config_file_exists):
         # arrange
         mock_configs = {"a": 1, "b": 2}
 
@@ -99,9 +97,7 @@ class TestHierarchicalConf:
 
     @mock.patch.object(HierarchicalConf, "_config_file_exists")
     @mock.patch.object(HierarchicalConf, "_read_configuration")
-    def test_nonexistent_config(
-        self, mock_read_configuration, mock_config_file_exists
-    ):
+    def test_nonexistent_config(self, mock_read_configuration, mock_config_file_exists):
         # arrange
         mock_configs = {"a": 1, "b": 2}
 
@@ -137,9 +133,7 @@ class TestHierarchicalConf:
         assert not returned_value
 
     @mock.patch("hierarchical_conf.hierarchical_conf.isfile")
-    def test__config_file_exists_with_file(
-        self, mock_is_file, hierarchical_conf
-    ):
+    def test__config_file_exists_with_file(self, mock_is_file, hierarchical_conf):
         # arrange
         path = ""
         mock_is_file.return_value = True

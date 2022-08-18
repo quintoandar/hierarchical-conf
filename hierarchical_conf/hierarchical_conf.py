@@ -81,7 +81,8 @@ class HierarchicalConf:
     def _config_file_exists(config_file_path: str) -> bool:
         """
         Checks if the configuration file path exists.
-        :param config_file_path: DAG's or Spark Job's configuration file path
+
+        :param config_file_path: the configuration file path
         """
         if isfile(config_file_path):
             return True
