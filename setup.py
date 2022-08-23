@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 __package_name__ = "hierarchical_conf"
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 __repository_url__ = "https://github.com/quintoandar/hierarchical-conf"
 
 
