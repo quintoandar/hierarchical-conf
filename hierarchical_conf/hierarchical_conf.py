@@ -1,5 +1,4 @@
 """Hierarchical Conf main class."""
-import logging
 import os
 from collections.abc import Mapping
 from os.path import isfile
@@ -86,10 +85,6 @@ class HierarchicalConf:
         if isfile(config_file_path):
             return True
 
-        logging.warning(
-            f"msg=This configuration file was not found in the given path,"
-            f"file={config_file_path}"
-        )
         return False
 
     @staticmethod
