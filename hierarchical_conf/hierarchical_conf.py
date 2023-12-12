@@ -99,9 +99,7 @@ class HierarchicalConf:
             return yaml.safe_load(f)
 
     def _deep_update(
-        self,
-        source: Dict[str, Any],
-        overrides: MappingType[str, Any],
+        self, source: Dict[str, Any], overrides: MappingType[str, Any]
     ) -> Dict[str, Any]:
         """
         Updates the dicts given priority to the last loaded one.
