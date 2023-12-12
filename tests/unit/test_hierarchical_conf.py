@@ -29,7 +29,7 @@ class TestHierarchicalConf:
         # assert
         mock_get_environment.assert_called_once_with()
         mock_search_configurations_files.assert_called_once_with(searched_paths)
-        mock_load_configurations_from_files.assert_called_once_with(False)
+        mock_load_configurations_from_files.assert_called_once_with()
 
     @mock.patch.object(HierarchicalConf, "_config_file_exists")
     @mock.patch.object(HierarchicalConf, "_read_configuration")
@@ -185,9 +185,7 @@ class TestHierarchicalConf:
         overrides = {"key1": None, "key2": "new value", "key3": {"a": 1}}
 
         # act
-        returned_value = hierarchical_conf._deep_update(
-            source, overrides, delete_nulls=True
-        )
+        returned_value = hierarchical_conf._deep_update(source, overrides)
 
         # assert
         assert returned_value == expected_value

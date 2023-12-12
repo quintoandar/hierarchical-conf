@@ -10,17 +10,16 @@ import yaml
 class HierarchicalConf:
     """User main interface with the lib operations."""
 
-    def __init__(self, searched_paths: List[str], delete_nulls: bool = False) -> None:
+    def __init__(self, searched_paths: List[str]) -> None:
         """
         Searches for the configuration files and load their values.
 
         :param searched_paths: the list of paths where the conf files will be
          searched
-        :param delete_nulls: whether keys with null values should be deleted
         """
         self._config_file_name = f"{self._get_environment()}_conf.yml"
         self._configuration_files = self._search_configurations_files(searched_paths)
-        self._configs = self._load_configurations_from_files(delete_nulls)
+        self._configs = self._load_configurations_from_files()
 
     @property
     def configs(self) -> Dict[str, Union[str, List[Any], Dict[str, Any]]]:
@@ -52,11 +51,11 @@ class HierarchicalConf:
 
         return env
 
-    def _load_configurations_from_files(self, delete_nulls=False) -> Dict[str, Any]:
+    def _load_configurations_from_files(self) -> Dict[str, Any]:
         configs = {}  # type: ignore
         for config_file in self._configuration_files:
             conf_content = self._read_configuration(config_file)
-            configs = self._deep_update(configs, conf_content, delete_nulls)
+            configs = self._deep_update(configs, conf_content)
 
         return configs
 
@@ -103,7 +102,6 @@ class HierarchicalConf:
         self,
         source: Dict[str, Any],
         overrides: MappingType[str, Any],
-        delete_nulls=False,
     ) -> Dict[str, Any]:
         """
         Updates the dicts given priority to the last loaded one.
@@ -121,7 +119,7 @@ class HierarchicalConf:
             if isinstance(value, Mapping) and value:
                 returned = self._deep_update(source.get(key, {}), value)
                 source[key] = returned
-            elif delete_nulls and value is None:
+            elif value is None:
                 source.pop(key, None)
             else:
                 source[key] = overrides[key]
