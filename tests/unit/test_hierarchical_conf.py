@@ -174,3 +174,18 @@ class TestHierarchicalConf:
 
         # assert
         assert returned_value == expected_value
+
+    def test_deep_update_deleting_nulls(self, hierarchical_conf):
+        # arrange
+        expected_value = {"key2": "new value", "key3": {"a": 1}}
+        source = {
+            "key1": "val1",
+            "key2": "val2",
+        }
+        overrides = {"key1": None, "key2": "new value", "key3": {"a": 1}}
+
+        # act
+        returned_value = hierarchical_conf._deep_update(source, overrides)
+
+        # assert
+        assert returned_value == expected_value
