@@ -117,6 +117,8 @@ class HierarchicalConf:
             if isinstance(value, Mapping) and value:
                 returned = self._deep_update(source.get(key, {}), value)
                 source[key] = returned
+            elif value is None:
+                source.pop(key, None)
             else:
                 source[key] = overrides[key]
         return source
