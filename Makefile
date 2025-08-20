@@ -2,8 +2,8 @@
 .PHONY: environment
 ## create virtual environment for hierarchical-conf
 environment:
-	@pyenv install -s 3.7.3
-	@pyenv virtualenv 3.7.3 hierarchical-conf
+	@pyenv install -s 3.8.12
+	@pyenv virtualenv 3.8.12 hierarchical-conf
 	@pyenv local hierarchical-conf
 	@PYTHONPATH=. python -m pip install --upgrade pip
 
